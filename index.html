@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pinterest</title>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+</head>
+<body>
+
+  <header>
+    <nav>
+        <ul class="navbar">
+            <li class="logo">
+                <a href="#"><img src="pinterest.png"></a>
+            </li>
+            <li class="inicio">
+              <div class="dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Inicio
+                </a>
+                <!-- <button class="dropbtn">Dropdown</button> -->
+                <div class="dropdown-content">
+                  <a href="#">Inicio</a>
+                  <a href="#">Hoy</a>
+                  <a href="#">Siguiendo</a>
+                </div>
+              </div>
+            </li>
+            <li class="tendencia">
+              <button class="btn btn-sm btn-dark" type="button">Inicio</button> 
+            </li>
+            <li class="tendencia">
+              <a class="linkInicio" href="#">Hoy</a>
+            </li>
+            <li class="tendencia">
+              <a class="linkInicio" href="#">Siguiendo</a>
+            </li>
+            <li class="search_icono">
+              <a href="#">
+                <i class="bi-search icono"></i>
+              </a>
+            </li>
+            <li class="search">
+                <input type="text" placeholder="Buscar">
+            </li>
+            <li>
+              <a href="#">
+                <i class="bi-bell-fill icono"></i>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <i class="bi-chat-dots-fill icono"></i>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <i class="bi-circle icono"></i>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <i class="bi-chevron-down icono"></i>
+              </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+      <article>
+        <div class="container mt-5">
+        <div class="row row-cols-1 row-cols-xs-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 row-cols-xl-6 g-4" data-masonry='{"percentPosition": true }'>
+          <div class="col">
+            <div class="card">
+              <a href="" data-bs-toggle="modal" data-bs-target="#imagen"><img class="card-img-top shadow" src="image/img1.jpg" alt=""></a>
+            </div>
+
+            <!-- Modal -->
+            <div class="modal fade" id="imagen" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              
+              <div class="modal-dialog modal-lg modal-dialog-centered">
+                <img class="img-fluid rounded" src="image/img1.jpg" alt="">
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card">
+              <a href="" data-bs-toggle="modal" data-bs-target="#imagen2"><img class="card-img-top shadow" src="image/img2.jpg" alt=""></a>
+            </div>
+            <!-- Modal -->
+            <div class="modal fade" id="imagen2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">              
+              <div class="modal-dialog modal-dialog-centered">
+                <img class="img-fluid rounded" src="image/img2.jpg" alt="">
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card">
+              <a href="" data-bs-toggle="modal" data-bs-target="#imagen3"><img class="card-img-top shadow" src="image/img3.jpg" alt=""></a>
+            </div>
+            <!-- Modal -->
+            <div class="modal fade" id="imagen3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-lg modal-dialog-centered">
+                <img class="img-fluid rounded" src="image/img3.jpg" alt="">
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card">
+              <a href="" data-bs-toggle="modal" data-bs-target="#imagen4"><img class="card-img-top shadow" src="image/img4.jpg" alt=""></a>
+            </div>
+
+            <!-- Modal -->
+            <div class="modal fade" id="imagen4" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              
+              <div class="modal-dialog modal-dialog-centered">
+                <button type="button" class="btn-close float-end" data-bs-dismiss="modal" aria-label="Close"></button>
+                <img class="img-fluid rounded" src="image/img4.jpg" alt="">
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card">
+              <a href="" data-bs-toggle="modal" data-bs-target="#imagen5"><img class="card-img-top shadow" src="image/img5.jpg" alt=""></a>
+            </div>
+
+            <!-- Modal -->
+            <div class="modal fade" id="imagen5" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              
+              <div class="modal-dialog modal-lg modal-dialog-centered">
+                <button type="button" class="btn-close float-end" data-bs-dismiss="modal" aria-label="Close"></button>
+                <img class="img-fluid rounded" src="image/img5.jpg" alt="">
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card">
+              <a href="" data-bs-toggle="modal" data-bs-target="#imagen6"><img class="card-img-top shadow" src="image/img6.jpg" alt=""></a>
+            </div>
+
+            <!-- Modal -->
+            <div class="modal fade" id="imagen6" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              
+              <div class="modal-dialog modal-lg modal-dialog-centered">
+                <img class="img-fluid rounded" src="image/img6.jpg" alt="">
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card">
+              <a href="" data-bs-toggle="modal" data-bs-target="#imagen7"><img class="card-img-top shadow" src="image/img7.jpg" alt=""></a>
+            </div>
+
+            <!-- Modal -->
+            <div class="modal fade" id="imagen7" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              
+              <div class="modal-dialog modal-lg modal-dialog-centered">
+                <img class="img-fluid rounded" src="image/img7.jpg" alt="">
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card">
+              <a href="" data-bs-toggle="modal" data-bs-target="#imagen8"><img class="card-img-top shadow" src="image/img8.jpg" alt=""></a>
+            </div>
+
+            <!-- Modal -->
+            <div class="modal fade" id="imagen8" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              
+              <div class="modal-dialog modal-lg modal-dialog-centered">
+                <img class="img-fluid rounded" src="image/img8.jpg" alt="">
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card">
+              <a href="" data-bs-toggle="modal" data-bs-target="#imagen9"><img class="card-img-top shadow" src="image/img9.jpg" alt=""></a>
+            </div>
+
+            <!-- Modal -->
+            <div class="modal fade" id="imagen9" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              
+              <div class="modal-dialog modal-lg modal-dialog-centered">
+                <img class="img-fluid rounded" src="image/img9.jpg" alt="">
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card">
+              <a href="" data-bs-toggle="modal" data-bs-target="#imagen10"><img class="card-img-top shadow" src="image/img10.jpg" alt=""></a>
+            </div>
+
+            <!-- Modal -->
+            <div class="modal fade" id="imagen10" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              
+              <div class="modal-dialog modal-lg modal-dialog-centered">
+                <img class="img-fluid rounded" src="image/img10.jpg" alt="">
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card">
+              <a href="" data-bs-toggle="modal" data-bs-target="#imagen11"><img class="card-img-top shadow" src="image/img11.jpg" alt=""></a>
+            </div>
+
+            <!-- Modal -->
+            <div class="modal fade" id="imagen11" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              
+              <div class="modal-dialog modal-lg modal-dialog-centered">
+                <img class="img-fluid rounded" src="image/img11.jpg" alt="">
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card">
+              <a href="" data-bs-toggle="modal" data-bs-target="#imagen12"><img class="card-img-top shadow" src="image/img12.jpg" alt=""></a>
+            </div>
+
+            <!-- Modal -->
+            <div class="modal fade" id="imagen12" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              
+              <div class="modal-dialog modal-lg modal-dialog-centered">
+                <img class="img-fluid rounded" src="image/img12.jpg" alt="">
+              </div>
+            </div>
+          </div>
+          <div class="col">
+              <div class="card">
+                <a href="" data-bs-toggle="modal" data-bs-target="#imagen13"><img class="card-img-top shadow" src="image/img13.jpg" alt=""></a>
+              </div>
+  
+              <!-- Modal -->
+              <div class="modal fade" id="imagen13" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                
+                <div class="modal-dialog modal-lg modal-dialog-centered">
+                  <img class="img-fluid rounded" src="image/img13.jpg" alt="">
+                </div>
+              </div>
+          </div>
+          <div class="col">
+            <div class="card">
+              <a href="" data-bs-toggle="modal" data-bs-target="#imagen14"><img class="card-img-top shadow" src="image/img14.jpg" alt=""></a>
+            </div>
+
+            <!-- Modal -->
+            <div class="modal fade" id="imagen14" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              
+              <div class="modal-dialog modal-lg modal-dialog-centered">
+                <img class="img-fluid rounded" src="image/img14.jpg" alt="">
+              </div>
+            </div>
+          </div>
+          <div class="col">
+          <div class="card">
+            <a href="" data-bs-toggle="modal" data-bs-target="#imagen15"><img class="card-img-top shadow" src="image/img15.jpg" alt=""></a>
+          </div>
+
+          <!-- Modal -->
+          <div class="modal fade" id="imagen15" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+              <img class="img-fluid rounded" src="image/img15.jpg" alt="">
+            </div>
+          </div>
+          </div>   
+          <div class="col">
+            <div class="card">
+              <a href="" data-bs-toggle="modal" data-bs-target="#imagen16"><img class="card-img-top shadow" src="image/img16.jpg" alt=""></a>
+            </div>
+  
+            <!-- Modal -->
+            <div class="modal fade" id="imagen16" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              
+              <div class="modal-dialog modal-lg modal-dialog-centered">
+                <img class="img-fluid rounded" src="image/img16.jpg" alt="">
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card">
+              <a href="" data-bs-toggle="modal" data-bs-target="#imagen17"><img class="card-img-top shadow" src="image/img17.jpg" alt=""></a>
+            </div>
+  
+            <!-- Modal -->
+            <div class="modal fade" id="imagen17" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              
+              <div class="modal-dialog modal-lg modal-dialog-centered">
+                <img class="img-fluid rounded" src="image/img17.jpg" alt="">
+              </div>
+            </div>
+            </div>
+          <div class="col">
+              <div class="card">
+                <a href="" data-bs-toggle="modal" data-bs-target="#imagen18"><img class="card-img-top shadow" src="image/img18.jpg" alt=""></a>
+              </div>
+    
+              <!-- Modal -->
+              <div class="modal fade" id="imagen18" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                
+                <div class="modal-dialog modal-lg modal-dialog-centered">
+                  <img class="img-fluid rounded" src="image/img18.jpg" alt="">
+                </div>
+              </div>
+          </div>
+          <div class="col">
+            <div class="card">
+              <a href="" data-bs-toggle="modal" data-bs-target="#imagen19"><img class="card-img-top shadow" src="image/img19.jpg" alt=""></a>
+            </div>
+  
+            <!-- Modal -->
+            <div class="modal fade" id="imagen19" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              
+              <div class="modal-dialog modal-lg modal-dialog-centered">
+                <img class="img-fluid rounded" src="image/img19.jpg" alt="">
+              </div>
+            </div>
+          </div>
+          <div class="col">
+          <div class="card">
+            <a href="" data-bs-toggle="modal" data-bs-target="#imagen20"><img class="card-img-top shadow" src="image/img20.jpg" alt=""></a>
+          </div>
+
+          <!-- Modal -->
+          <div class="modal fade" id="imagen20" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+              <img class="img-fluid rounded" src="image/img20.jpg" alt="">
+            </div>
+          </div>
+           </div>
+           <div class="col">
+            <div class="card">
+              <a href="" data-bs-toggle="modal" data-bs-target="#imagen21"><img class="card-img-top shadow" src="image/img21.jpg" alt=""></a>
+            </div>
+  
+            <!-- Modal -->
+            <div class="modal fade" id="imagen21" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              
+              <div class="modal-dialog modal-lg modal-dialog-centered">
+                <img class="img-fluid rounded" src="image/img21.jpg" alt="">
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card">
+              <a href="" data-bs-toggle="modal" data-bs-target="#imagen22"><img class="card-img-top shadow" src="image/img22.jpg" alt=""></a>
+            </div>
+  
+            <!-- Modal -->
+            <div class="modal fade" id="imagen22" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              
+              <div class="modal-dialog modal-lg modal-dialog-centered">
+                <img class="img-fluid rounded" src="image/img22.jpg" alt="">
+              </div>
+            </div>
+</div>
+<div class="col">
+            <div class="card">
+              <a href="" data-bs-toggle="modal" data-bs-target="#imagen23"><img class="card-img-top shadow" src="image/img23.jpg" alt=""></a>
+            </div>
+  
+            <!-- Modal -->
+            <div class="modal fade" id="imagen23" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              
+              <div class="modal-dialog modal-lg modal-dialog-centered">
+                <img class="img-fluid rounded" src="image/img23.jpg" alt="">
+              </div>
+            </div>
+</div>
+<div class="col">
+            <div class="card">
+              <a href="" data-bs-toggle="modal" data-bs-target="#imagen24"><img class="card-img-top shadow" src="image/img24.jpg" alt=""></a>
+            </div>
+  
+            <!-- Modal -->
+            <div class="modal fade" id="imagen24" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              
+              <div class="modal-dialog modal-lg modal-dialog-centered">
+                <img class="img-fluid rounded" src="image/img24.jpg" alt="">
+              </div>
+            </div>
+</div>
+<div class="col">
+            <div class="card">
+              <a href="" data-bs-toggle="modal" data-bs-target="#imagen25"><img class="card-img-top shadow" src="image/img25.jpg" alt=""></a>
+            </div>
+  
+            <!-- Modal -->
+            <div class="modal fade" id="imagen25" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              
+              <div class="modal-dialog modal-lg modal-dialog-centered">
+                <img class="img-fluid rounded" src="image/img25.jpg" alt="">
+              </div>
+            </div>
+</div>
+<div class="col">
+            <div class="card">
+              <a href="" data-bs-toggle="modal" data-bs-target="#imagen26"><img class="card-img-top shadow" src="image/img26.jpg" alt=""></a>
+            </div>
+  
+            <!-- Modal -->
+            <div class="modal fade" id="imagen26" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              
+              <div class="modal-dialog modal-lg modal-dialog-centered">
+                <img class="img-fluid rounded" src="image/img26.jpg" alt="">
+              </div>
+            </div>
+</div>
+<div class="col">
+            <div class="card">
+              <a href="" data-bs-toggle="modal" data-bs-target="#imagen27"><img class="card-img-top shadow" src="image/img27.jpg" alt=""></a>
+            </div>
+  
+            <!-- Modal -->
+            <div class="modal fade" id="imagen27" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              
+              <div class="modal-dialog modal-lg modal-dialog-centered">
+                <img class="img-fluid rounded" src="image/img27.jpg" alt="">
+              </div>
+            </div>
+</div>
+<div class="col">
+            <div class="card">
+              <a href="" data-bs-toggle="modal" data-bs-target="#imagen28"><img class="card-img-top shadow" src="image/img28.jpg" alt=""></a>
+            </div>
+  
+            <!-- Modal -->
+            <div class="modal fade" id="imagen28" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              
+              <div class="modal-dialog modal-lg modal-dialog-centered">
+                <img class="img-fluid rounded" src="image/img28.jpg" alt="">
+              </div>
+            </div>
+</div>
+<div class="col">
+            <div class="card">
+              <a href="" data-bs-toggle="modal" data-bs-target="#imagen29"><img class="card-img-top shadow" src="image/img29.jpg" alt=""></a>
+            </div>
+  
+            <!-- Modal -->
+            <div class="modal fade" id="imagen29" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              
+              <div class="modal-dialog modal-lg modal-dialog-centered">
+                <img class="img-fluid rounded" src="image/img29.jpg" alt="">
+              </div>
+            </div>
+</div> 
+           <div class="col">
+            <div class="card">
+              <a href="" data-bs-toggle="modal" data-bs-target="#imagen30"><img class="card-img-top shadow" src="image/img30.jpg" alt=""></a>
+            </div>
+
+            <!-- Modal -->
+            <div class="modal fade" id="imagen30" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              
+              <div class="modal-dialog modal-lg modal-dialog-centered">
+                <img class="img-fluid rounded" src="image/img30.jpg" alt="">
+              </div>
+            </div>
+          </div>
+
+
+          <div class="col">
+            <div class="card">
+              <a href="" data-bs-toggle="modal" data-bs-target="#imagen31"><img class="card-img-top shadow" src="image/img31.jpg" alt=""></a>
+            </div>
+    
+            <!-- Modal -->
+            <div class="modal fade" id="imagen31" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                
+              <div class="modal-dialog modal-lg modal-dialog-centered">
+                  <img class="img-fluid rounded" src="image/img31.jpg" alt="">
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card">
+                <a href="" data-bs-toggle="modal" data-bs-target="#imagen32"><img class="card-img-top shadow" src="image/img32.jpg" alt=""></a>
+            </div>
+      
+            <!-- Modal -->
+            <div class="modal fade" id="imagen32" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-lg modal-dialog-centered">
+                  <img class="img-fluid rounded" src="image/img32.jpg" alt="">
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card">
+              <a href="" data-bs-toggle="modal" data-bs-target="#imagen33"><img class="card-img-top shadow" src="image/img33.jpg" alt=""></a>
+            </div>
+            <!-- Modal -->
+            <div class="modal fade" id="imagen33" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">   
+              <div class="modal-dialog modal-lg modal-dialog-centered">
+                  <img class="img-fluid rounded" src="image/img33.jpg" alt="">
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card">
+                <a href="" data-bs-toggle="modal" data-bs-target="#imagen34"><img class="card-img-top shadow" src="image/img34.jpg" alt=""></a>
+            </div>
+           <!-- Modal -->
+            <div class="modal fade" id="imagen34" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-lg modal-dialog-centered">
+                  <img class="img-fluid rounded" src="image/img34.jpg" alt="">
+              </div>
+            </div>
+          </div>     
+          <div class="col">
+            <div class="card">
+                <a href="" data-bs-toggle="modal" data-bs-target="#imagen35"><img class="card-img-top shadow" src="image/img35.jpg" alt=""></a>
+            </div>
+           <!-- Modal -->
+            <div class="modal fade" id="imagen35" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-lg modal-dialog-centered">
+                  <img class="img-fluid rounded" src="image/img35.jpg" alt="">
+              </div>
+            </div>
+          </div> 
+          <div class="col">
+            <div class="card">
+                <a href="" data-bs-toggle="modal" data-bs-target="#imagen36"><img class="card-img-top shadow" src="image/img36.jpg" alt=""></a>
+            </div>
+           <!-- Modal -->
+            <div class="modal fade" id="imagen36" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-lg modal-dialog-centered">
+                  <img class="img-fluid rounded" src="image/img36.jpg" alt="">
+              </div>
+            </div>
+          </div> 
+          <div class="col">
+            <div class="card">
+                <a href="" data-bs-toggle="modal" data-bs-target="#imagen37"><img class="card-img-top shadow" src="image/img37.jpg" alt=""></a>
+            </div>
+           <!-- Modal -->
+            <div class="modal fade" id="imagen37" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-lg modal-dialog-centered">
+                  <img class="img-fluid rounded" src="image/img37.jpg" alt="">
+              </div>
+            </div>
+          </div> 
+          <div class="col">
+            <div class="card">
+                <a href="" data-bs-toggle="modal" data-bs-target="#imagen38"><img class="card-img-top shadow" src="image/img38.jpg" alt=""></a>
+            </div>
+           <!-- Modal -->
+            <div class="modal fade" id="imagen38" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-lg modal-dialog-centered">
+                  <img class="img-fluid rounded" src="image/img38.jpg" alt="">
+              </div>
+            </div>
+          </div> 
+          <div class="col">
+            <div class="card">
+                <a href="" data-bs-toggle="modal" data-bs-target="#imagen39"><img class="card-img-top shadow" src="image/img39.jpg" alt=""></a>
+            </div>
+           <!-- Modal -->
+            <div class="modal fade" id="imagen39" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-lg modal-dialog-centered">
+                  <img class="img-fluid rounded" src="image/img39.jpg" alt="">
+              </div>
+            </div>
+          </div> 
+          <div class="col">
+            <div class="card">
+                <a href="" data-bs-toggle="modal" data-bs-target="#imagen40"><img class="card-img-top shadow" src="image/img40.jpg" alt=""></a>
+            </div>
+           <!-- Modal -->
+            <div class="modal fade" id="imagen40" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-lg modal-dialog-centered">
+                  <img class="img-fluid rounded" src="image/img40.jpg" alt="">
+              </div>
+            </div>
+          </div> 
+          <div class="col">
+            <div class="card">
+                <a href="" data-bs-toggle="modal" data-bs-target="#imagen41"><img class="card-img-top shadow" src="image/img41.jpg" alt=""></a>
+            </div>
+           <!-- Modal -->
+            <div class="modal fade" id="imagen41" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-lg modal-dialog-centered">
+                  <img class="img-fluid rounded" src="image/img41.jpg" alt="">
+              </div>
+            </div>
+          </div> 
+          <div class="col">
+            <div class="card">
+                <a href="" data-bs-toggle="modal" data-bs-target="#imagen42"><img class="card-img-top shadow" src="image/img42.jpg" alt=""></a>
+            </div>
+           <!-- Modal -->
+            <div class="modal fade" id="imagen42" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-lg modal-dialog-centered">
+                  <img class="img-fluid rounded" src="image/img42.jpg" alt="">
+              </div>
+            </div>
+          </div> 
+          <div class="col">
+            <div class="card">
+                <a href="" data-bs-toggle="modal" data-bs-target="#imagen43"><img class="card-img-top shadow" src="image/img43.jpg" alt=""></a>
+            </div>
+           <!-- Modal -->
+            <div class="modal fade" id="imagen43" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-lg modal-dialog-centered">
+                  <img class="img-fluid rounded" src="image/img43.jpg" alt="">
+              </div>
+            </div>
+          </div> 
+          <div class="col">
+            <div class="card">
+                <a href="" data-bs-toggle="modal" data-bs-target="#imagen44"><img class="card-img-top shadow" src="image/img44.jpg" alt=""></a>
+            </div>
+           <!-- Modal -->
+            <div class="modal fade" id="imagen44" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-lg modal-dialog-centered">
+                  <img class="img-fluid rounded" src="image/img44.jpg" alt="">
+              </div>
+            </div>
+          </div> 
+          <div class="col">
+            <div class="card">
+                <a href="" data-bs-toggle="modal" data-bs-target="#imagen45"><img class="card-img-top shadow" src="image/img45.jpg" alt=""></a>
+            </div>
+           <!-- Modal -->
+            <div class="modal fade" id="imagen45" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-lg modal-dialog-centered">
+                  <img class="img-fluid rounded" src="image/img45.jpg" alt="">
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card">
+                <a href="" data-bs-toggle="modal" data-bs-target="#imagen46"><img class="card-img-top shadow" src="image/img46.jpg" alt=""></a>
+            </div>
+           <!-- Modal -->
+            <div class="modal fade" id="imagen46" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-lg modal-dialog-centered">
+                  <img class="img-fluid rounded" src="image/img46.jpg" alt="">
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card">
+                <a href="" data-bs-toggle="modal" data-bs-target="#imagen47"><img class="card-img-top shadow" src="image/img47.jpg" alt=""></a>
+            </div>
+           <!-- Modal -->
+            <div class="modal fade" id="imagen47" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-lg modal-dialog-centered">
+                  <img class="img-fluid rounded" src="image/img47.jpg" alt="">
+              </div>
+            </div>
+          </div>
+        </div> 
+        </div>
+      </article>
+    </main>      
+    <!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async></script>
+</body>
+</html>

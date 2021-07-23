@@ -1,1 +1,2 @@
-# jcvillacorta.github.io
+# kata1PinterestEquipo1
+ 
