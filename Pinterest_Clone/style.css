@@ -142,3 +142,6 @@ i.icono {
     align-items: center;
     justify-content: center;
   }
+  .card, .card-img-top, .img-fluid {
+    border-radius: 1.5rem !important;
+  }
