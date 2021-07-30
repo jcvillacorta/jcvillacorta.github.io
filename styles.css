@@ -15,7 +15,8 @@ font-size: 20px;
     grid-template-columns: 100px 1fr;
 }
 .wrap{
-    width: 1440px;
+    width: 100%;
+    max-width: 1440px;
     margin-top: 0px;
     margin-right: auto;
     margin-bottom: 0px;
@@ -33,11 +34,6 @@ h1{ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, 
     margin-bottom: 20px;
 }
 .globalmenu {
-   /* top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 99;*/
     padding: 0px;
     display: flex;
     flex-direction: column-reverse;
@@ -52,6 +48,7 @@ h1{ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, 
     font-family: "Monserrat", Helvetica, Arial, sans-serif;
     text-transform: uppercase;   
     font-size: 18px;
+    list-style: none;
 }
 .sns {    
     width: 70px;
@@ -67,7 +64,7 @@ a{
     color: rgb(46, 40, 40);
 }
 .container {
-    width: 1380px;
+    max-width: 1380px;
     margin: auto;
     padding-left: 30px;
     padding-right: 30px;
@@ -115,7 +112,7 @@ a{
     transform: rotate(45deg);
 }
 .container2 {
-    width: 1380px;
+    max-width: 1380px;
     margin: auto;
     margin-top: 50px;
     padding-left: 30px;
@@ -141,7 +138,7 @@ text-transform: uppercase;
     width: 30%;
 }
 .container3 {
-    width: 1380px;
+    max-width: 1380px;
     margin: auto;
     margin-top: 30px;
     padding-left: 30px;
@@ -157,10 +154,12 @@ text-transform: uppercase;
     list-style-type: none;
 }
 .imagencentrada {
-    margin: auto;
+    width: 100%;
+    max-width: 1440px;
+    height: auto;
 }
 footer ul{
-    width: 500px;
+    max-width: 500px;
     margin: auto;
     margin-top: 30px;
     padding-left: 30px;
@@ -169,4 +168,87 @@ footer ul{
     display: flex;
     justify-content: space-between;
     list-style-type: none;
+}
+@media screen and (max-width: 768px) {
+    .header .items{
+        display: block;
+    }
+    .logo {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    .item1 {
+        width: 100%;
+    }
+    .boton {
+        width: 80%;
+    }
+    .item2 {
+        display: none;
+    }
+    .container2 {
+        display: block;
+    }
+    .container_grid {
+        grid-template-columns: repeat(2, 250px);
+        grid-template-rows: repeat(2);
+    }
+    .item_grid {
+        margin-bottom: 30px;
+    }
+    .item2_1, .item2_2, .item2_3 {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 50px;
+        margin-right: 50px;
+    }
+    .globalmenu {
+        width: 100%;
+        height: auto;
+        display: none;
+    }
+    .menu {
+        display: block;
+        max-height: 0;
+        overflow: hidden;
+    }
+    .sns {
+        display: block;
+        max-height: 0;
+        overflow: hidden;
+    }
+    .menu a {
+        text-align: center;
+        width: 100%;
+        height: 50px;
+        background-color: #f1c40f;
+        padding: 10px 0px 10px 5%;
+    }
+    .menu-icon {
+        width: 100px;
+        height: inherit;
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        line-height: 60px;
+    }
+    #menuToggle:checked ~ ul {
+        max-height: 350px;
+        /*Para fazer com que o menu saia da esquerda ou direita, você deve trocar max-height por max-width*/
+    }
+    .menu-icon i {
+        font-size: 1.7em;
+    }
+}
+@media screen and (max-width: 500px) {
+    .container_grid {
+        grid-template-columns: repeat(1, 250px);
+        grid-template-rows: repeat(2);
+    }
+    footer ul{
+        flex-direction: column;
+        text-align: center;
+    }
 }
