@@ -1,0 +1,32 @@
+html, body {
+    height: 100%;
+    }
+  
+  .contenedor {
+  height: 100%;
+  display: flex;
+  flex-direction : column; 
+  }
+  
+  .alcien {
+    flex: 1 1 auto;
+    }
+  
+  #img1 {
+      position: absolute;
+      left: 0px;
+      top: 0px;
+      z-index: -1
+    }
+  
+  .foto {
+    background-image: url("banconacional-login-fondo.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .foto2 {
+    background-image: url("banco-login-fondo_2.jpg");
+    background-repeat: no-repeat;
+  }
