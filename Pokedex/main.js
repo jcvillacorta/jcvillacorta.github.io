@@ -23,7 +23,13 @@ async function fetchPokemons(number) {
   }
 }
 
-function createPokemon (pokemon) {
+async function createPokemon (pokemon) {
+  const respuesta = await fetch(`https://pokeapi.co/api/v2/pokemon-species/${pokemon.id}/`)
+  const especie = await respuesta.json()
+  const descripcion = especie.flavor_text_entries.find(entry => entry.language.name === "es").flavor_text
+  const modalDescripcion = document.createElement("p")
+  modalDescripcion.textContent = descripcion
+
     const cardContainer = document.createElement("div")
     cardContainer.classList.add("col")
 
@@ -91,7 +97,7 @@ function createPokemon (pokemon) {
 
     const modalBody = document.createElement("div")
     modalBody.classList.add("modal-body")
-   //  modalBody.appendChild(descripcionPokemon (pokemon2.descripcion2))
+    modalBody.appendChild(modalDescripcion)
     modalBody.appendChild(renderPokemonTipo(pokemon.types))
     modalBody.appendChild(progressBars(pokemon.stats))
 
