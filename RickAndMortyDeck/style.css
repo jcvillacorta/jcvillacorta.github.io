@@ -30,6 +30,51 @@ body {
 
   .card {
     border-radius: 1.5rem !important;
+    border: 0px !important;
+    background: linear-gradient(
+      45deg,
+      rgb(234, 245, 235) 0%,
+      rgb(184, 244, 211) 54%,
+      rgb(196, 242, 213) 82%
+    );
+  }
+
+  .status {
+    display: flex;
+    align-items: center;
+  }
+
+  .status_icon_alive {
+    height: 0.5rem;
+    width: 0.5rem;
+    margin-right: 0.375rem;
+    background: rgb(85, 204, 68);
+    border-radius: 50%;
+  }
+
+  .status_icon_dead {
+    height: 0.5rem;
+    width: 0.5rem;
+    margin-right: 0.375rem;
+    background: rgb(240, 55, 34);
+    border-radius: 50%;
+  }
+
+  .status_icon_unkown {
+    height: 0.5rem;
+    width: 0.5rem;
+    margin-right: 0.375rem;
+    background: rgb(63, 63, 63);
+    border-radius: 50%;
+  }
+
+  .modal-content {
+    background: linear-gradient(
+      45deg,
+      rgb(234, 245, 235) 0%,
+      rgb(184, 244, 211) 54%,
+      rgb(196, 242, 213) 82%
+    );
   }
 
   .name {
