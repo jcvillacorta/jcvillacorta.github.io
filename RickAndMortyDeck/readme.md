@@ -1,8 +1,9 @@
-Rick and Morty Deck
+<h1>Rick and Morty Deck</h1>
 
 Deck con los primeros 152 personajes de la Rick and Morty API
 
-Api: https://rickandmortyapi.com
-Desarrollado por: Juan Carlos Villacorta
+<strong>Api:</strong> https://rickandmortyapi.com
 
-Herramientas: Vanilla Javascript, Bootstrap 5
+<strong>Desarrollado por:</strong> Juan Carlos Villacorta
+
+<strong>Herramientas:</strong> Vanilla Javascript, Bootstrap 5
