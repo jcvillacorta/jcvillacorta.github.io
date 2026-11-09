@@ -1,0 +1,5 @@
+# Bloqueo de indexación para páginas de salud privada
+User-agent: *
+Disallow: /salud/
+Disallow: /salud.html
+Disallow: /examenes/

@@ -2,6 +2,11 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
+  <!-- Bloqueo para motores de búsqueda y robots (Privacidad Médica) -->
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+  <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet">
+  <meta name="bingbot" content="noindex, nofollow, noarchive, nosnippet">
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dashboard Clínico - Juan Carlos Villacorta Reyes (Oct 2025)</title>
   
@@ -207,7 +212,7 @@
             Se aprecia un estado metabólico, hepático, hematológico y tiroideo en general <strong>muy bien conservado</strong>. Sin embargo, destacan <strong>dos puntos clave que justifican evaluación médica prioritaria</strong>:
           </p>
           <ul class="text-sm space-y-1.5 text-blue-100 list-disc list-inside">
-            <li><strong class="text-white">Urología / Próstata:</strong> PSA Total en <strong class="text-amber-300">3.68 ng/mL</strong>. Para varones de 40 a 50 años el punto de corte orientativo del laboratorio es ≤ 2.00 ng/mL. Se aconseja correlación clínica (descartar prostatitis, infección urinaria concomitante o hiperplasia) y eventualmente PSA libre o ecografía prostática.</li>
+            <li><strong class="text-white">Urología / Próstata & Ecografía:</strong> PSA Total en <strong class="text-amber-300">3.68 ng/mL</strong> (ref 40-50a: ≤ 2.00 ng/mL). <span class="bg-emerald-900/60 text-emerald-200 px-1.5 py-0.5 rounded font-semibold text-xs border border-emerald-500/30">Ecografía 100% Normal:</span> Próstata de 18 cc (tamaño normal), sin nódulos ni calcificaciones, y vejiga post-miccional vacua (sin residuo). Esto orienta la elevación a una causa inflamatoria/urinaria benigna.</li> Para varones de 40 a 50 años el punto de corte orientativo del laboratorio es ≤ 2.00 ng/mL. Se aconseja correlación clínica (descartar prostatitis, infección urinaria concomitante o hiperplasia) y eventualmente PSA libre o ecografía prostática.</li>
             <li><strong class="text-white">Nefrología / Sedimento Urinario:</strong> Microalbuminuria en 24h de <strong class="text-amber-300">92 mg/24h</strong> (rango A2: 30-300 mg/24h) y esterasa leucocitaria 1+ con bacterias y leucocitos en orina. Requiere correlacionar con urocultivo y presión arterial para descartar causa infecciosa antes de atribuirlo a hiperfiltración glomerular.</li>
             <li><strong class="text-white">Cardiometabólico:</strong> Dislipidemia leve mixta (Colesterol Total 203.6, LDL 137.9) e índice HOMA-IR estimado en <strong class="text-white">2.93</strong> (Glucosa 89.1, Insulina 13.3), candidato ideal a optimización con estilo de vida saludable.</li>
           </ul>
@@ -222,6 +227,9 @@
       </button>
       <button onclick="filterCategory('alert')" id="btn-alert" class="cat-btn px-4 py-2 text-sm font-semibold rounded-xl bg-white text-slate-700 hover:bg-slate-100 border border-slate-200 transition">
         🚨 Alertas & Límites
+      </button>
+      <button onclick="filterCategory('eco')" id="btn-eco" class="cat-btn px-4 py-2 text-sm font-semibold rounded-xl bg-white text-slate-700 hover:bg-slate-100 border border-slate-200 transition">
+        📸 Ecografía Urológica
       </button>
       <button onclick="filterCategory('prostate')" id="btn-prostate" class="cat-btn px-4 py-2 text-sm font-semibold rounded-xl bg-white text-slate-700 hover:bg-slate-100 border border-slate-200 transition">
         Próstata (PSA)
@@ -299,6 +307,153 @@
               </p>
             </div>
           </div>
+        </div>
+      </div>
+    </div>
+
+    
+    <!-- SECCIÓN ECOGRAFÍA UROLÓGICA (VEJIGA, RIÑONES Y PRÓSTATA) -->
+    <div class="category-block print-break-inside-avoid" data-cat="prostate renal eco">
+      <div class="bg-white border-2 border-emerald-300 rounded-2xl p-6 shadow-sm space-y-5">
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b border-slate-100 pb-3">
+          <div>
+            <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">
+              Diagnóstico por Imágenes • Ultrasonografía Urológica
+            </span>
+            <h3 class="text-xl font-bold text-slate-900 mt-1">Ecografía Urológica en Tiempo Real</h3>
+            <p class="text-xs text-slate-500 mt-0.5">Ecógrafo EDAN D3 con transductor convexo multifrecuencia</p>
+          </div>
+          <div class="text-right">
+            <span class="inline-flex items-center gap-1.5 bg-emerald-100 text-emerald-800 font-extrabold text-xs px-3 py-1.5 rounded-full border border-emerald-200">
+              <span class="w-2 h-2 rounded-full bg-emerald-600"></span>
+              Conclusión: 100% Normal
+            </span>
+          </div>
+        </div>
+
+        <!-- 3 Tarjetas de Órganos: Próstata, Vejiga, Riñones -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+
+          <!-- 1. PRÓSTATA -->
+          <div class="p-4 rounded-xl border border-emerald-200 bg-emerald-50/40 space-y-3">
+            <div class="flex justify-between items-center border-b border-emerald-100 pb-2">
+              <span class="font-bold text-slate-900 uppercase tracking-wide flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                Próstata
+              </span>
+              <span class="font-black text-emerald-700 text-sm">18.0 cm³ (Normal)</span>
+            </div>
+            <div class="space-y-1.5 text-slate-600">
+              <div class="flex justify-between">
+                <span>Volumen:</span>
+                <span class="font-bold text-emerald-700">18.0 cm³ <span class="font-normal text-slate-500">(Ref normal ≤ 20-25)</span></span>
+              </div>
+              <div class="flex justify-between">
+                <span>Dimensiones:</span>
+                <span class="font-semibold text-slate-800">40.9 x 31.1 x 27.2 mm</span>
+              </div>
+              <div class="flex justify-between">
+                <span>Ecogenicidad:</span>
+                <span class="font-semibold text-slate-800">Homogénea</span>
+              </div>
+              <div class="flex justify-between">
+                <span>Calcificaciones:</span>
+                <span class="font-semibold text-emerald-700">Ausentes</span>
+              </div>
+              <div class="flex justify-between">
+                <span>Bordes:</span>
+                <span class="font-semibold text-slate-800">Regulares</span>
+              </div>
+            </div>
+            <div class="pt-2 border-t border-emerald-100 text-[11px] text-emerald-800 font-medium">
+              ✅ <strong>Relevancia:</strong> Descarta nódulos sospechosos, masas o crecimiento severo. Gran tranquilidad ante el PSA 3.68.
+            </div>
+          </div>
+
+          <!-- 2. VEJIGA -->
+          <div class="p-4 rounded-xl border border-emerald-200 bg-emerald-50/40 space-y-3">
+            <div class="flex justify-between items-center border-b border-emerald-100 pb-2">
+              <span class="font-bold text-slate-900 uppercase tracking-wide flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                Vejiga Urinaria
+              </span>
+              <span class="font-black text-emerald-700 text-sm">Residuo: 0 ml</span>
+            </div>
+            <div class="space-y-1.5 text-slate-600">
+              <div class="flex justify-between">
+                <span>Volumen Pre-Micción:</span>
+                <span class="font-bold text-slate-800">169 ml</span>
+              </div>
+              <div class="flex justify-between">
+                <span>Volumen Post-Micción:</span>
+                <span class="font-bold text-emerald-700 bg-emerald-100 px-1.5 rounded">Vacua (0% residuo)</span>
+              </div>
+              <div class="flex justify-between">
+                <span>Grosor Pared:</span>
+                <span class="font-semibold text-slate-800">5.16 mm (No engrosada)</span>
+              </div>
+              <div class="flex justify-between">
+                <span>Contenido:</span>
+                <span class="font-semibold text-slate-800">Anecoico limpio</span>
+              </div>
+              <div class="flex justify-between">
+                <span>Cálculos / Masas:</span>
+                <span class="font-semibold text-emerald-700">Sin cálculos ni expansivas</span>
+              </div>
+            </div>
+            <div class="pt-2 border-t border-emerald-100 text-[11px] text-emerald-800 font-medium">
+              ✅ <strong>Relevancia:</strong> Vaciado vesical total sin retención urinaria ni signos de obstrucción infravesical.
+            </div>
+          </div>
+
+          <!-- 3. RIÑONES -->
+          <div class="p-4 rounded-xl border border-emerald-200 bg-emerald-50/40 space-y-3">
+            <div class="flex justify-between items-center border-b border-emerald-100 pb-2">
+              <span class="font-bold text-slate-900 uppercase tracking-wide flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                Riñones (Bilateral)
+              </span>
+              <span class="font-black text-emerald-700 text-sm">Sin Litiasis</span>
+            </div>
+            <div class="space-y-1.5 text-slate-600">
+              <div class="flex justify-between">
+                <span>Riñón Derecho:</span>
+                <span class="font-semibold text-slate-800">100 x 47 mm (Cortical 20mm)</span>
+              </div>
+              <div class="flex justify-between">
+                <span>Riñón Izquierdo:</span>
+                <span class="font-semibold text-slate-800">109 x 54 mm (Cortical 21mm)</span>
+              </div>
+              <div class="flex justify-between">
+                <span>Parénquima:</span>
+                <span class="font-semibold text-slate-800">Homogéneo, ecogenicidad normal</span>
+              </div>
+              <div class="flex justify-between">
+                <span>Diferenc. Corticomedular:</span>
+                <span class="font-semibold text-emerald-700">Conservada</span>
+              </div>
+              <div class="flex justify-between">
+                <span>Sistema Pielocalicial:</span>
+                <span class="font-semibold text-emerald-700">Sin dilatación ni cálculos</span>
+              </div>
+            </div>
+            <div class="pt-2 border-t border-emerald-100 text-[11px] text-emerald-800 font-medium">
+              ✅ <strong>Relevancia:</strong> Anatomía renal indemne, sin litiasis que justifiquen la hematuria o microalbuminuria.
+            </div>
+          </div>
+        </div>
+
+        <!-- Conclusión Médica Integrada -->
+        <div class="p-4 bg-emerald-50 rounded-xl border border-emerald-200 text-xs text-emerald-950 space-y-1">
+          <p class="font-bold text-emerald-900 text-sm flex items-center gap-2">
+            <svg class="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            Conclusión Ecográfica Oficial: "VEJIGA, RIÑONES Y PRÓSTATA EN PARÁMETROS ECOGRÁFICOS NORMALES"
+          </p>
+          <p class="text-slate-700 mt-1 leading-relaxed">
+            <strong>Correlación Diagnóstica:</strong> La normalidad del volumen prostático (18 cm³), la homogeneidad del tejido y la vejiga vacua post-micción son datos altamente favorables frente al PSA de 3.68 ng/mL. Esto orienta el diagnóstico hacia un <strong>origen inflamatorio o infeccioso transitorio</strong> (asociado a la bacteriuria y esterasa leucocitaria positiva en orina) y no a patología tumoral ni a uropatía obstructiva.
+          </p>
         </div>
       </div>
     </div>
