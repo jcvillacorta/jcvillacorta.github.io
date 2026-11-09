@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard Clínico - Juan Carlos Villacorta Reyes (Oct 2025)</title>
+  
+  <!-- Tailwind CSS CDN para navegadores externos y dispositivos móviles -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <meta property="og:title" content="Dashboard Clínico - Juan Carlos Villacorta Reyes">
+  <meta property="og:description" content="Informe médico visual con semáforos clínicos y rangos de referencia (Octubre 2025).">
+  <meta property="og:type" content="website">
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+  <style>
+    @media print {
+      body { background: #ffffff !important; color: #000000 !important; }
+      .no-print { display: none !important; }
+      .print-break-inside-avoid { break-inside: avoid; }
+      .card-print { border: 1px solid #e2e8f0 !important; box-shadow: none !important; }
+    }
+    /* Estilos personalizados para barras de rango */
+    .range-track {
+      position: relative;
+      height: 8px;
+      border-radius: 9999px;
+      background: #e2e8f0;
+      overflow: visible;
+    }
+    .marker-pin {
+      position: absolute;
+      top: -5px;
+      transform: translateX(-50%);
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      border: 3px solid white;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.25);
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased p-4 md:p-8 font-sans min-h-screen">
+
+  <div class="max-w-7xl mx-auto space-y-6">
+
+    <!-- CABECERA DEL PACIENTE -->
+    <header class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+      <div>
+        <div class="flex items-center gap-3">
+          <span class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-blue-600 text-white font-bold text-xl shadow-md">
+            JV
+          </span>
+          <div>
+            <div class="flex items-center gap-2">
+              <h1 class="text-2xl font-bold text-slate-900">Juan Carlos Villacorta Reyes</h1>
+              <span class="bg-blue-100 text-blue-700 font-semibold text-xs px-2.5 py-0.5 rounded-full border border-blue-200">
+                49 años • Varón
+              </span>
+            </div>
+            <p class="text-sm text-slate-500 mt-0.5">
+              Informe de Laboratorio Clínico y Perfil Preventivo • <span class="font-medium text-slate-700">Octubre 2025</span>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-3 no-print w-full md:w-auto justify-end">
+        
+        <button onclick="navigator.clipboard.writeText(window.location.href); alert('¡Enlace copiado al portapapeles! Ya puedes pegarlo en WhatsApp para enviárselo a tu médico.');" class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium px-4 py-2.5 rounded-xl transition shadow-sm">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+          </svg>
+          Copiar Enlace
+        </button>
+        <button onclick="window.print()" class="inline-flex items-center gap-2 bg-slate-900 hover:bg-slate-800 text-white text-sm font-medium px-4 py-2.5 rounded-xl transition shadow-sm">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H7a2 2 0 00-2 2v4h10z" />
+          </svg>
+          Imprimir / Guardar PDF
+        </button>
+      </div>
+    </header>
+
+    <!-- RESUMEN EJECUTIVO (KPIs CLÍNICOS) -->
+    <section class="grid grid-cols-1 md:grid-cols-4 gap-4">
+      <!-- Tarjeta 1: Alertas Clave -->
+      <div class="bg-red-50 border border-red-200 rounded-2xl p-5 shadow-sm">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-xs font-bold uppercase tracking-wider text-red-700 flex items-center gap-1.5">
+            <span class="w-2.5 h-2.5 rounded-full bg-red-600 animate-pulse"></span>
+            Atención Prioritaria
+          </span>
+          <span class="text-xs bg-red-200 text-red-800 px-2 py-0.5 rounded-full font-bold">2 Hallazgos</span>
+        </div>
+        <div class="space-y-2 mt-3 text-sm">
+          <div class="bg-white/80 p-2.5 rounded-xl border border-red-100">
+            <div class="flex justify-between items-baseline">
+              <span class="font-semibold text-slate-800">PSA Total (Próstata)</span>
+              <span class="text-red-700 font-bold text-base">3.68 <span class="text-xs font-normal">ng/mL</span></span>
+            </div>
+            <p class="text-xs text-red-600 mt-0.5">Límite para 40-50 años: ≤ 2.00 ng/mL</p>
+          </div>
+          <div class="bg-white/80 p-2.5 rounded-xl border border-red-100">
+            <div class="flex justify-between items-baseline">
+              <span class="font-semibold text-slate-800">Microalbuminuria 24h</span>
+              <span class="text-red-700 font-bold text-base">92.0 <span class="text-xs font-normal">mg/24h</span></span>
+            </div>
+            <p class="text-xs text-red-600 mt-0.5">Valor normal: 0 – 30 mg/24h</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tarjeta 2: Parámetros Limítrofes -->
+      <div class="bg-amber-50 border border-amber-200 rounded-2xl p-5 shadow-sm">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-xs font-bold uppercase tracking-wider text-amber-800 flex items-center gap-1.5">
+            <span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
+            En Observación
+          </span>
+          <span class="text-xs bg-amber-200 text-amber-900 px-2 py-0.5 rounded-full font-bold">Límites</span>
+        </div>
+        <div class="space-y-2 mt-3 text-sm">
+          <div class="bg-white/80 p-2.5 rounded-xl border border-amber-100">
+            <div class="flex justify-between items-baseline">
+              <span class="font-semibold text-slate-800">Colesterol Total</span>
+              <span class="text-amber-800 font-bold text-base">203.6 <span class="text-xs font-normal">mg/dL</span></span>
+            </div>
+            <p class="text-xs text-amber-700 mt-0.5">Límite deseable: &lt; 200 mg/dL</p>
+          </div>
+          <div class="bg-white/80 p-2.5 rounded-xl border border-amber-100">
+            <div class="flex justify-between items-baseline">
+              <span class="font-semibold text-slate-800">Colesterol LDL</span>
+              <span class="text-amber-800 font-bold text-base">137.9 <span class="text-xs font-normal">mg/dL</span></span>
+            </div>
+            <p class="text-xs text-amber-700 mt-0.5">Óptimo &lt; 100 • Límite 130-159</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tarjeta 3: Metabolismo & Corazón -->
+      <div class="bg-emerald-50 border border-emerald-200 rounded-2xl p-5 shadow-sm">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-xs font-bold uppercase tracking-wider text-emerald-800 flex items-center gap-1.5">
+            <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+            Metabolismo Óptimo
+          </span>
+          <span class="text-xs bg-emerald-200 text-emerald-900 px-2 py-0.5 rounded-full font-bold">Control</span>
+        </div>
+        <div class="space-y-2 mt-3 text-sm">
+          <div class="bg-white/80 p-2.5 rounded-xl border border-emerald-100">
+            <div class="flex justify-between items-baseline">
+              <span class="font-semibold text-slate-800">Glucosa en Ayunas</span>
+              <span class="text-emerald-700 font-bold text-base">89.1 <span class="text-xs font-normal">mg/dL</span></span>
+            </div>
+            <p class="text-xs text-emerald-600 mt-0.5">Rango normal: 70 – 100 mg/dL</p>
+          </div>
+          <div class="bg-white/80 p-2.5 rounded-xl border border-emerald-100">
+            <div class="flex justify-between items-baseline">
+              <span class="font-semibold text-slate-800">HbA1c (Glicosilada)</span>
+              <span class="text-emerald-700 font-bold text-base">5.6 <span class="text-xs font-normal">%</span></span>
+            </div>
+            <p class="text-xs text-emerald-600 mt-0.5">Normal: &lt; 5.7% (Normoglucemia)</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tarjeta 4: Órganos Clave (Hígado / Riñón / Tiroides) -->
+      <div class="bg-blue-50 border border-blue-200 rounded-2xl p-5 shadow-sm">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-xs font-bold uppercase tracking-wider text-blue-800 flex items-center gap-1.5">
+            <span class="w-2.5 h-2.5 rounded-full bg-blue-500"></span>
+            Función de Órganos
+          </span>
+          <span class="text-xs bg-blue-200 text-blue-900 px-2 py-0.5 rounded-full font-bold">Saludable</span>
+        </div>
+        <div class="space-y-2 mt-3 text-sm">
+          <div class="bg-white/80 p-2.5 rounded-xl border border-blue-100 flex justify-between items-center">
+            <div>
+              <p class="font-semibold text-slate-800">Función Renal</p>
+              <p class="text-xs text-slate-500">Creatinina: 0.92 mg/dL</p>
+            </div>
+            <span class="text-blue-700 font-bold text-xs bg-blue-100 px-2 py-1 rounded-md">eGFR > 95 mL/min</span>
+          </div>
+          <div class="bg-white/80 p-2.5 rounded-xl border border-blue-100 flex justify-between items-center">
+            <div>
+              <p class="font-semibold text-slate-800">Hígado (TGO / TGP)</p>
+              <p class="text-xs text-slate-500">17.3 / 11.7 U/L</p>
+            </div>
+            <span class="text-emerald-700 font-bold text-xs bg-emerald-100 px-2 py-1 rounded-md">100% Normal</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- NOTA CLÍNICA DE ENFOQUE MÉDICO -->
+    <div class="bg-gradient-to-r from-blue-900 to-indigo-900 text-white rounded-2xl p-6 shadow-md print-break-inside-avoid">
+      <div class="flex items-start gap-4">
+        <div class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center shrink-0 text-amber-300">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+        </div>
+        <div class="space-y-2">
+          <h2 class="text-lg font-bold text-white flex items-center gap-2">
+            Orientación Diagnóstica para el Médico Tratante
+          </h2>
+          <p class="text-blue-100 text-sm leading-relaxed">
+            Se aprecia un estado metabólico, hepático, hematológico y tiroideo en general <strong>muy bien conservado</strong>. Sin embargo, destacan <strong>dos puntos clave que justifican evaluación médica prioritaria</strong>:
+          </p>
+          <ul class="text-sm space-y-1.5 text-blue-100 list-disc list-inside">
+            <li><strong class="text-white">Urología / Próstata:</strong> PSA Total en <strong class="text-amber-300">3.68 ng/mL</strong>. Para varones de 40 a 50 años el punto de corte orientativo del laboratorio es ≤ 2.00 ng/mL. Se aconseja correlación clínica (descartar prostatitis, infección urinaria concomitante o hiperplasia) y eventualmente PSA libre o ecografía prostática.</li>
+            <li><strong class="text-white">Nefrología / Sedimento Urinario:</strong> Microalbuminuria en 24h de <strong class="text-amber-300">92 mg/24h</strong> (rango A2: 30-300 mg/24h) y esterasa leucocitaria 1+ con bacterias y leucocitos en orina. Requiere correlacionar con urocultivo y presión arterial para descartar causa infecciosa antes de atribuirlo a hiperfiltración glomerular.</li>
+            <li><strong class="text-white">Cardiometabólico:</strong> Dislipidemia leve mixta (Colesterol Total 203.6, LDL 137.9) e índice HOMA-IR estimado en <strong class="text-white">2.93</strong> (Glucosa 89.1, Insulina 13.3), candidato ideal a optimización con estilo de vida saludable.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- PESTAÑAS DE NAVEGACIÓN RÁPIDA -->
+    <div class="no-print flex flex-wrap gap-2 border-b border-slate-200 pb-2">
+      <button onclick="filterCategory('all')" id="btn-all" class="cat-btn px-4 py-2 text-sm font-semibold rounded-xl bg-blue-600 text-white shadow-sm transition">
+        Todos los Exámenes
+      </button>
+      <button onclick="filterCategory('alert')" id="btn-alert" class="cat-btn px-4 py-2 text-sm font-semibold rounded-xl bg-white text-slate-700 hover:bg-slate-100 border border-slate-200 transition">
+        🚨 Alertas & Límites
+      </button>
+      <button onclick="filterCategory('prostate')" id="btn-prostate" class="cat-btn px-4 py-2 text-sm font-semibold rounded-xl bg-white text-slate-700 hover:bg-slate-100 border border-slate-200 transition">
+        Próstata (PSA)
+      </button>
+      <button onclick="filterCategory('renal')" id="btn-renal" class="cat-btn px-4 py-2 text-sm font-semibold rounded-xl bg-white text-slate-700 hover:bg-slate-100 border border-slate-200 transition">
+        Renal & Orina
+      </button>
+      <button onclick="filterCategory('lipid')" id="btn-lipid" class="cat-btn px-4 py-2 text-sm font-semibold rounded-xl bg-white text-slate-700 hover:bg-slate-100 border border-slate-200 transition">
+        Perfil Lipídico
+      </button>
+      <button onclick="filterCategory('metabolic')" id="btn-metabolic" class="cat-btn px-4 py-2 text-sm font-semibold rounded-xl bg-white text-slate-700 hover:bg-slate-100 border border-slate-200 transition">
+        Glucosa & HOMA-IR
+      </button>
+      <button onclick="filterCategory('hemo')" id="btn-hemo" class="cat-btn px-4 py-2 text-sm font-semibold rounded-xl bg-white text-slate-700 hover:bg-slate-100 border border-slate-200 transition">
+        Hemograma Completo
+      </button>
+      <button onclick="filterCategory('other')" id="btn-other" class="cat-btn px-4 py-2 text-sm font-semibold rounded-xl bg-white text-slate-700 hover:bg-slate-100 border border-slate-200 transition">
+        Hígado, Tiroides & B12
+      </button>
+    </div>
+
+    <!-- SECCIÓN 1: PRÓSTATA (ANTÍGENO PROSTÁTICO ESPECÍFICO) -->
+    <div class="category-block print-break-inside-avoid" data-cat="prostate alert">
+      <div class="bg-white border-2 border-red-300 rounded-2xl p-6 shadow-sm">
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 mb-4 border-b border-slate-100 pb-3">
+          <div>
+            <span class="bg-red-100 text-red-800 text-xs font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">
+              Urología • Alerta de Control
+            </span>
+            <h3 class="text-xl font-bold text-slate-900 mt-1">Antígeno Prostático Específico (PSA Total)</h3>
+          </div>
+          <div class="text-right">
+            <span class="text-2xl font-black text-red-600">3.68</span> <span class="text-sm font-semibold text-slate-600">ng/mL</span>
+            <p class="text-xs text-red-600 font-medium">Elevado para el grupo 40-50 años</p>
+          </div>
+        </div>
+
+        <!-- Visualizador gráfico tipo Gauge / Escala -->
+        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-3">
+          <div class="flex justify-between text-xs font-bold text-slate-500">
+            <span>0.00 (Mínimo)</span>
+            <span class="text-emerald-700">≤ 2.00 ng/mL (Normal 40-50a)</span>
+            <span class="text-amber-700">4.00 ng/mL (Límite General)</span>
+            <span class="text-red-700">10.00+</span>
+          </div>
+
+          <!-- Barra de rangos -->
+          <div class="relative w-full h-7 rounded-lg overflow-hidden flex bg-slate-200 shadow-inner">
+            <div style="width: 20%;" class="bg-emerald-500 flex items-center justify-center text-[11px] font-bold text-white">
+              Óptimo (&lt;2.0)
+            </div>
+            <div style="width: 20%;" class="bg-amber-400 flex items-center justify-center text-[11px] font-bold text-amber-950">
+              Alerta (2-4)
+            </div>
+            <div style="width: 60%;" class="bg-red-500 flex items-center justify-center text-[11px] font-bold text-white">
+              Elevado (&gt;4.0)
+            </div>
+            <!-- Pin indicador -->
+            <div style="left: 36.8%;" class="absolute top-0 bottom-0 w-1 bg-black ring-4 ring-white shadow-xl flex flex-col items-center">
+              <span class="bg-black text-white text-[11px] font-extrabold px-1.5 py-0.5 rounded -mt-6">3.68</span>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs text-slate-600 pt-3">
+            <div class="bg-white p-3 rounded-lg border border-slate-200">
+              <p class="font-bold text-slate-800">Interpretación Clínica:</p>
+              <p class="mt-1">
+                Para hombres de 49 años, un PSA de 3.68 ng/mL sobrepasa el valor de referencia etario (hasta 2.00 ng/mL). Aunque sigue por debajo del corte poblacional general (4.0 ng/mL), amerita evaluación por <strong>Urología</strong>.
+              </p>
+            </div>
+            <div class="bg-white p-3 rounded-lg border border-slate-200">
+              <p class="font-bold text-slate-800">Causas Frecuentes No Malignas:</p>
+              <p class="mt-1">
+                Hiperplasia prostática benigna (crecimiento benigno), prostatitis o inflamación pélvica, o bien manipulación/ejercicio previo (bicicleta, relaciones recientes o infección urinaria asociada a los hallazgos en orina).
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECCIÓN 2: RENAL & EXAMEN COMPLETO DE ORINA -->
+    <div class="category-block print-break-inside-avoid" data-cat="renal alert">
+      <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-5">
+        <div class="flex justify-between items-center border-b border-slate-100 pb-3">
+          <div>
+            <span class="bg-purple-100 text-purple-800 text-xs font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">
+              Nefrología & Urinario
+            </span>
+            <h3 class="text-xl font-bold text-slate-900 mt-1">Función Renal y Análisis de Orina 24 Horas</h3>
+          </div>
+          <span class="text-xs bg-amber-100 text-amber-800 font-semibold px-3 py-1 rounded-full">
+            Microalbuminuria Positiva
+          </span>
+        </div>
+
+        <!-- Métricas Renales y Albuminuria -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <!-- Microalbuminuria 24h -->
+          <div class="p-4 rounded-xl border-2 border-red-200 bg-red-50/60">
+            <div class="flex justify-between items-start">
+              <div>
+                <p class="text-xs font-bold text-red-900 uppercase">Microalbuminuria 24h</p>
+                <p class="text-2xl font-black text-red-700 mt-1">92.0 <span class="text-xs font-normal">mg/24h</span></p>
+              </div>
+              <span class="text-xs bg-red-200 text-red-800 font-bold px-2 py-0.5 rounded">Alterado</span>
+            </div>
+            <div class="w-full bg-slate-200 h-2 rounded-full mt-3 overflow-hidden">
+              <div class="bg-red-600 h-full" style="width: 75%;"></div>
+            </div>
+            <p class="text-[11px] text-red-700 mt-2 font-medium">Ref: 0 – 30 mg/24h • Grado A2 (30-300 mg)</p>
+          </div>
+
+          <!-- Microalbuminuria aislada -->
+          <div class="p-4 rounded-xl border-2 border-red-200 bg-red-50/60">
+            <div class="flex justify-between items-start">
+              <div>
+                <p class="text-xs font-bold text-red-900 uppercase">Microalbuminuria Aislada</p>
+                <p class="text-2xl font-black text-red-700 mt-1">43.6 <span class="text-xs font-normal">mg/L</span></p>
+              </div>
+              <span class="text-xs bg-red-200 text-red-800 font-bold px-2 py-0.5 rounded">Alterado</span>
+            </div>
+            <div class="w-full bg-slate-200 h-2 rounded-full mt-3 overflow-hidden">
+              <div class="bg-red-600 h-full" style="width: 80%;"></div>
+            </div>
+            <p class="text-[11px] text-red-700 mt-2 font-medium">Ref: ≤ 18 mg/L</p>
+          </div>
+
+          <!-- Creatinina & eGFR -->
+          <div class="p-4 rounded-xl border border-emerald-200 bg-emerald-50/60">
+            <div class="flex justify-between items-start">
+              <div>
+                <p class="text-xs font-bold text-emerald-900 uppercase">Creatinina Sérica</p>
+                <p class="text-2xl font-black text-emerald-700 mt-1">0.92 <span class="text-xs font-normal">mg/dL</span></p>
+              </div>
+              <span class="text-xs bg-emerald-200 text-emerald-800 font-bold px-2 py-0.5 rounded">Normal</span>
+            </div>
+            <div class="w-full bg-slate-200 h-2 rounded-full mt-3 overflow-hidden">
+              <div class="bg-emerald-600 h-full" style="width: 45%;"></div>
+            </div>
+            <p class="text-[11px] text-emerald-700 mt-2 font-medium">
+              Ref: 0.5 – 1.4 mg/dL • Filtrado (eGFR): <strong>~98 mL/min</strong>
+            </p>
+          </div>
+        </div>
+
+        <!-- Tabla detallada del Uroanálisis Completo -->
+        <div class="border border-slate-200 rounded-xl overflow-hidden">
+          <div class="bg-slate-100 px-4 py-2.5 font-bold text-xs uppercase tracking-wider text-slate-700">
+            Hallazgos del Examen Completo de Orina & Sedimento
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-slate-200 text-xs">
+            <!-- Físico -->
+            <div class="p-4 space-y-2">
+              <h4 class="font-bold text-slate-800 uppercase tracking-wider text-[11px] text-blue-700">Examen Físico</h4>
+              <div class="flex justify-between py-1 border-b border-slate-100">
+                <span class="text-slate-600">Color:</span>
+                <span class="font-semibold text-slate-900">Amarillo</span>
+              </div>
+              <div class="flex justify-between py-1 border-b border-slate-100">
+                <span class="text-slate-600">Aspecto:</span>
+                <span class="font-semibold text-amber-700 bg-amber-50 px-1.5 rounded">Turbio</span>
+              </div>
+              <div class="flex justify-between py-1 border-b border-slate-100">
+                <span class="text-slate-600">pH:</span>
+                <span class="font-semibold text-slate-900">6.0 (Normal)</span>
+              </div>
+              <div class="flex justify-between py-1">
+                <span class="text-slate-600">Olor:</span>
+                <span class="font-semibold text-slate-900">Suigéneris</span>
+              </div>
+            </div>
+
+            <!-- Químico -->
+            <div class="p-4 space-y-2">
+              <h4 class="font-bold text-slate-800 uppercase tracking-wider text-[11px] text-blue-700">Examen Químico</h4>
+              <div class="flex justify-between py-1 border-b border-slate-100">
+                <span class="text-slate-600">Esterasa Leucocitaria:</span>
+                <span class="font-bold text-amber-700 bg-amber-50 px-1.5 rounded">1+ (Positivo)</span>
+              </div>
+              <div class="flex justify-between py-1 border-b border-slate-100">
+                <span class="text-slate-600">Bilirrubinas:</span>
+                <span class="font-semibold text-amber-700">+ Traza</span>
+              </div>
+              <div class="flex justify-between py-1 border-b border-slate-100">
+                <span class="text-slate-600">Proteínas / Glucosa:</span>
+                <span class="font-semibold text-emerald-700">Negativo</span>
+              </div>
+              <div class="flex justify-between py-1">
+                <span class="text-slate-600">Cuerpos Cetónicos / Urobilinógeno:</span>
+                <span class="font-semibold text-emerald-700">Negativo</span>
+              </div>
+            </div>
+
+            <!-- Microscópico -->
+            <div class="p-4 space-y-2">
+              <h4 class="font-bold text-slate-800 uppercase tracking-wider text-[11px] text-blue-700">Sedimento Microscópico</h4>
+              <div class="flex justify-between py-1 border-b border-slate-100">
+                <span class="text-slate-600">Leucocitos:</span>
+                <span class="font-bold text-amber-700">06 – 08 x campo</span>
+              </div>
+              <div class="flex justify-between py-1 border-b border-slate-100">
+                <span class="text-slate-600">Hematíes:</span>
+                <span class="font-semibold text-slate-800">00 – 01 x campo</span>
+              </div>
+              <div class="flex justify-between py-1 border-b border-slate-100">
+                <span class="text-slate-600">Bacterias:</span>
+                <span class="font-bold text-amber-700">Regular Cantidad</span>
+              </div>
+              <div class="flex justify-between py-1">
+                <span class="text-slate-600">Células Renales / Epiteliales:</span>
+                <span class="font-semibold text-slate-800">Algunas x campo</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="p-3 bg-amber-50 rounded-xl border border-amber-200 text-xs text-amber-900 flex items-start gap-2">
+          <svg class="w-5 h-5 text-amber-600 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+          </svg>
+          <div>
+            <strong>Recomendación para el Médico:</strong> La presencia de <em>Esterasa 1+</em>, <em>leucocitos (6-8/c)</em> y <em>regular cantidad de bacterias</em> sugiere una posible bacteriuria/infección urinaria baja en curso. Se recomienda revisar el resultado final del Urocultivo para tratar la infección y repetir la microalbuminuria luego de resuelta la inflamación, ya que las infecciones pueden elevar transitoriamente la albúmina en orina.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECCIÓN 3: PERFIL LIPÍDICO & RIESGO CARDIOVASCULAR -->
+    <div class="category-block print-break-inside-avoid" data-cat="lipid alert">
+      <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-4">
+        <div class="flex justify-between items-center border-b border-slate-100 pb-3">
+          <div>
+            <span class="bg-teal-100 text-teal-800 text-xs font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">
+              Cardiovascular
+            </span>
+            <h3 class="text-xl font-bold text-slate-900 mt-1">Perfil Lipídico Completo</h3>
+          </div>
+          <span class="text-xs bg-amber-100 text-amber-800 font-semibold px-3 py-1 rounded-full">
+            Dislipidemia Limítrofe Leve
+          </span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-5 gap-3">
+          <!-- Colesterol Total -->
+          <div class="p-3.5 rounded-xl border border-amber-200 bg-amber-50/40">
+            <div class="text-xs font-bold text-slate-700">Colesterol Total</div>
+            <div class="text-2xl font-black text-amber-700 mt-1">203.6 <span class="text-xs font-normal">mg/dL</span></div>
+            <span class="inline-block mt-1 text-[11px] font-semibold text-amber-800 bg-amber-100 px-2 py-0.5 rounded">
+              Límite Alto
+            </span>
+            <p class="text-[11px] text-slate-500 mt-2">Deseable: &lt; 200 • Límite: 200–239</p>
+          </div>
+
+          <!-- LDL -->
+          <div class="p-3.5 rounded-xl border border-amber-200 bg-amber-50/40">
+            <div class="text-xs font-bold text-slate-700">Colesterol LDL (Malo)</div>
+            <div class="text-2xl font-black text-amber-700 mt-1">137.9 <span class="text-xs font-normal">mg/dL</span></div>
+            <span class="inline-block mt-1 text-[11px] font-semibold text-amber-800 bg-amber-100 px-2 py-0.5 rounded">
+              Límite Alto
+            </span>
+            <p class="text-[11px] text-slate-500 mt-2">Óptimo: &lt; 100 • Límite: 130–159</p>
+          </div>
+
+          <!-- HDL -->
+          <div class="p-3.5 rounded-xl border border-emerald-200 bg-emerald-50/40">
+            <div class="text-xs font-bold text-slate-700">Colesterol HDL (Bueno)</div>
+            <div class="text-2xl font-black text-emerald-700 mt-1">40.7 <span class="text-xs font-normal">mg/dL</span></div>
+            <span class="inline-block mt-1 text-[11px] font-semibold text-emerald-800 bg-emerald-100 px-2 py-0.5 rounded">
+              Aceptable
+            </span>
+            <p class="text-[11px] text-slate-500 mt-2">Deseable: &gt; 35 (Ideal &gt; 40)</p>
+          </div>
+
+          <!-- Triglicéridos -->
+          <div class="p-3.5 rounded-xl border border-emerald-200 bg-emerald-50/40">
+            <div class="text-xs font-bold text-slate-700">Triglicéridos</div>
+            <div class="text-2xl font-black text-emerald-700 mt-1">125.2 <span class="text-xs font-normal">mg/dL</span></div>
+            <span class="inline-block mt-1 text-[11px] font-semibold text-emerald-800 bg-emerald-100 px-2 py-0.5 rounded">
+              Normal
+            </span>
+            <p class="text-[11px] text-slate-500 mt-2">Normal: &lt; 150 mg/dL</p>
+          </div>
+
+          <!-- VLDL -->
+          <div class="p-3.5 rounded-xl border border-emerald-200 bg-emerald-50/40">
+            <div class="text-xs font-bold text-slate-700">Colesterol VLDL</div>
+            <div class="text-2xl font-black text-emerald-700 mt-1">25.0 <span class="text-xs font-normal">mg/dL</span></div>
+            <span class="inline-block mt-1 text-[11px] font-semibold text-emerald-800 bg-emerald-100 px-2 py-0.5 rounded">
+              Normal
+            </span>
+            <p class="text-[11px] text-slate-500 mt-2">Rango normal: 2 – 30 mg/dL</p>
+          </div>
+        </div>
+
+        <!-- Indicadores de Riesgo Aterogénico -->
+        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+          <div>
+            <div class="flex justify-between font-bold text-slate-700 mb-1">
+              <span>Índice Castelli (Colesterol Total / HDL):</span>
+              <span class="text-amber-700 font-extrabold text-sm">5.0</span>
+            </div>
+            <p class="text-slate-500">Valor deseable &lt; 4.5. En 5.0 representa un riesgo cardiovascular estándar a ligeramente aumentado, corregible con ejercicio aeróbico y nutrición rica en fibra.</p>
+          </div>
+          <div>
+            <div class="flex justify-between font-bold text-slate-700 mb-1">
+              <span>Relación Triglicéridos / HDL:</span>
+              <span class="text-emerald-700 font-extrabold text-sm">3.07</span>
+            </div>
+            <p class="text-slate-500">Normal &lt; 3.0 – 3.5. Sugiere baja presencia de partículas LDL pequeñas y densas muy aterogénicas.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECCIÓN 4: METABOLISMO DE GLUCOSA & RESISTENCIA A LA INSULINA -->
+    <div class="category-block print-break-inside-avoid" data-cat="metabolic">
+      <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-4">
+        <div class="flex justify-between items-center border-b border-slate-100 pb-3">
+          <div>
+            <span class="bg-indigo-100 text-indigo-800 text-xs font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">
+              Endocrinología & Metabolismo
+            </span>
+            <h3 class="text-xl font-bold text-slate-900 mt-1">Glucosa, Insulina y Hemoglobina Glicosilada</h3>
+          </div>
+          <span class="text-xs bg-emerald-100 text-emerald-800 font-semibold px-3 py-1 rounded-full">
+            Sin Diabetes (Normoglicemia)
+          </span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+          <!-- Glucosa -->
+          <div class="p-4 rounded-xl border border-emerald-200 bg-emerald-50/40">
+            <span class="text-xs font-bold text-slate-700 uppercase">Glucosa Basal</span>
+            <div class="text-2xl font-black text-emerald-700 mt-1">89.1 <span class="text-xs font-normal">mg/dL</span></div>
+            <p class="text-xs text-emerald-800 font-semibold mt-1">Óptima (Normal)</p>
+            <p class="text-[11px] text-slate-500 mt-2">Valor de referencia: 70 – 100 mg/dL</p>
+          </div>
+
+          <!-- Insulina Basal -->
+          <div class="p-4 rounded-xl border border-blue-200 bg-blue-50/40">
+            <span class="text-xs font-bold text-slate-700 uppercase">Insulina Basal (IRI)</span>
+            <div class="text-2xl font-black text-blue-700 mt-1">13.32 <span class="text-xs font-normal">uIU/mL</span></div>
+            <p class="text-xs text-blue-800 font-semibold mt-1">Dentro de Rango</p>
+            <p class="text-[11px] text-slate-500 mt-2">Valor de referencia: 5.0 – 24.9 uIU/mL</p>
+          </div>
+
+          <!-- HbA1c -->
+          <div class="p-4 rounded-xl border border-emerald-200 bg-emerald-50/40">
+            <span class="text-xs font-bold text-slate-700 uppercase">HbA1c (Glicosilada)</span>
+            <div class="text-2xl font-black text-emerald-700 mt-1">5.6 <span class="text-xs font-normal">%</span></div>
+            <p class="text-xs text-emerald-800 font-semibold mt-1">Normal (&lt; 5.7%)</p>
+            <p class="text-[11px] text-slate-500 mt-2">Normal: 4.2 – 6.2% (ADA: &lt; 5.7%)</p>
+          </div>
+
+          <!-- HOMA-IR Calculado -->
+          <div class="p-4 rounded-xl border border-amber-200 bg-amber-50/40">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold text-slate-700 uppercase">Índice HOMA-IR</span>
+              <span class="text-[10px] bg-slate-200 font-bold px-1.5 py-0.5 rounded text-slate-700">Calculado</span>
+            </div>
+            <div class="text-2xl font-black text-amber-700 mt-1">2.93</div>
+            <p class="text-xs text-amber-800 font-semibold mt-1">Leve Resistencia a Insulina</p>
+            <p class="text-[11px] text-slate-500 mt-2">Óptimo &lt; 2.0 • Resistencia &gt; 2.5</p>
+          </div>
+        </div>
+
+        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 text-xs text-slate-700">
+          <strong>Lectura Clínica:</strong> La glucosa y la hemoglobina glicosilada descartan completamente diabetes. Sin embargo, el índice HOMA-IR en <strong>2.93</strong> demuestra que el páncreas produce un extra de insulina para mantener la glucosa en 89 mg/dL. Es el momento perfecto para prevención con entrenamiento de fuerza y reducción de carbohidratos simples.
+        </div>
+      </div>
+    </div>
+
+    <!-- SECCIÓN 5: HEMOGRAMA COMPLETO -->
+    <div class="category-block print-break-inside-avoid" data-cat="hemo">
+      <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-4">
+        <div class="flex justify-between items-center border-b border-slate-100 pb-3">
+          <div>
+            <span class="bg-rose-100 text-rose-800 text-xs font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">
+              Hematología
+            </span>
+            <h3 class="text-xl font-bold text-slate-900 mt-1">Hemograma Completo & Serie Blanca/Roja</h3>
+          </div>
+          <span class="text-xs bg-blue-100 text-blue-800 font-semibold px-3 py-1 rounded-full">
+            Excelente Reserva Medular
+          </span>
+        </div>
+
+        <!-- 3 Columnas: Serie Roja, Serie Blanca, Plaquetas -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+          <!-- Serie Roja -->
+          <div class="border border-slate-200 rounded-xl p-4 bg-slate-50/50 space-y-3">
+            <h4 class="text-xs font-bold uppercase text-slate-900 tracking-wider flex items-center justify-between">
+              <span>Serie Roja (Eritrocitos)</span>
+              <span class="text-amber-600">Límite Superior</span>
+            </h4>
+            <div class="space-y-2 text-xs">
+              <div class="flex justify-between items-center py-1 border-b border-slate-200">
+                <span class="text-slate-600">Hemoglobina:</span>
+                <span class="font-bold text-slate-900">16.5 g/dL <span class="font-normal text-slate-500">(14.0 - 18.0)</span></span>
+              </div>
+              <div class="flex justify-between items-center py-1 border-b border-slate-200">
+                <span class="text-slate-600">Hematocrito:</span>
+                <span class="font-bold text-amber-700">51.0% <span class="font-normal text-slate-500">(40.0 - 50.0)</span> ⚠️</span>
+              </div>
+              <div class="flex justify-between items-center py-1 border-b border-slate-200">
+                <span class="text-slate-600">Recuento Hematíes:</span>
+                <span class="font-bold text-amber-700">5.66 M/mm³ <span class="font-normal text-slate-500">(4.5 - 5.5)</span> ⚠️</span>
+              </div>
+              <div class="flex justify-between items-center py-1 border-b border-slate-200">
+                <span class="text-slate-600">VCM (Tamaño):</span>
+                <span class="font-bold text-slate-900">86.3 fL <span class="font-normal text-slate-500">(82.0 - 92.0)</span></span>
+              </div>
+              <div class="flex justify-between items-center py-1 border-b border-slate-200">
+                <span class="text-slate-600">HCM:</span>
+                <span class="font-bold text-slate-900">29.7 pg <span class="font-normal text-slate-500">(27.0 - 32.0)</span></span>
+              </div>
+              <div class="flex justify-between items-center py-1">
+                <span class="text-slate-600">CHCM:</span>
+                <span class="font-bold text-slate-900">30.4 g/dL <span class="font-normal text-slate-500">(32.0 - 36.0)</span></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Serie Blanca -->
+          <div class="border border-slate-200 rounded-xl p-4 bg-slate-50/50 space-y-3">
+            <h4 class="text-xs font-bold uppercase text-slate-900 tracking-wider flex items-center justify-between">
+              <span>Serie Blanca (Leucocitos)</span>
+              <span class="text-emerald-700">Normal</span>
+            </h4>
+            <div class="space-y-2 text-xs">
+              <div class="flex justify-between items-center py-1 border-b border-slate-200">
+                <span class="text-slate-600">Leucocitos Totales:</span>
+                <span class="font-bold text-emerald-700 text-sm">6,200 /mm³ <span class="font-normal text-slate-500 text-xs">(5,000 - 10,000)</span></span>
+              </div>
+              <div class="flex justify-between items-center py-1 border-b border-slate-200">
+                <span class="text-slate-600">Segmentados (Neutrófilos):</span>
+                <span class="font-bold text-slate-900">53% <span class="font-normal text-slate-500">(55 - 65%)</span></span>
+              </div>
+              <div class="flex justify-between items-center py-1 border-b border-slate-200">
+                <span class="text-slate-600">Linfocitos:</span>
+                <span class="font-bold text-slate-900">38% <span class="font-normal text-slate-500">(25 - 35%)</span></span>
+              </div>
+              <div class="flex justify-between items-center py-1 border-b border-slate-200">
+                <span class="text-slate-600">Monocitos:</span>
+                <span class="font-bold text-slate-900">5% <span class="font-normal text-slate-500">(4 - 8%)</span></span>
+              </div>
+              <div class="flex justify-between items-center py-1 border-b border-slate-200">
+                <span class="text-slate-600">Eosinófilos:</span>
+                <span class="font-bold text-slate-900">1% <span class="font-normal text-slate-500">(0.5 - 4.0%)</span></span>
+              </div>
+              <div class="flex justify-between items-center py-1">
+                <span class="text-slate-600">Abastonados:</span>
+                <span class="font-bold text-slate-900">3% <span class="font-normal text-slate-500">(3 - 5%)</span></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Plaquetas y Coagulación -->
+          <div class="border border-slate-200 rounded-xl p-4 bg-slate-50/50 space-y-3">
+            <h4 class="text-xs font-bold uppercase text-slate-900 tracking-wider flex items-center justify-between">
+              <span>Plaquetas</span>
+              <span class="text-emerald-700">Óptimo</span>
+            </h4>
+            <div class="p-3 bg-white rounded-lg border border-slate-200 text-center">
+              <span class="text-xs font-semibold text-slate-500 uppercase">Recuento de Plaquetas</span>
+              <div class="text-2xl font-black text-emerald-700 mt-1">210,000 <span class="text-xs font-normal">cel/mm³</span></div>
+              <span class="text-xs font-bold text-emerald-800 bg-emerald-100 px-2 py-0.5 rounded-full mt-1 inline-block">
+                Completamente Normal
+              </span>
+              <p class="text-[11px] text-slate-500 mt-2">Rango de referencia: 150,000 – 450,000 cel/mm³</p>
+            </div>
+            <p class="text-[11px] text-slate-600 leading-relaxed">
+              El hematocrito en 51% y glóbulos rojos en 5.66M son levemente altos, lo que habitualmente se debe a una ligera hemoconcentración (hidratación antes de la toma) o altitud geográfica.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECCIÓN 6: HÍGADO, TIROIDES, ÁCIDO ÚRICO & VITAMINA B12 -->
+    <div class="category-block print-break-inside-avoid" data-cat="other">
+      <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-4">
+        <div class="flex justify-between items-center border-b border-slate-100 pb-3">
+          <div>
+            <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">
+              Función Sistémica
+            </span>
+            <h3 class="text-xl font-bold text-slate-900 mt-1">Hígado, Tiroides, Ácido Úrico & Vitamina B12</h3>
+          </div>
+          <span class="text-xs bg-emerald-100 text-emerald-800 font-semibold px-3 py-1 rounded-full">
+            Todos en Rango Óptimo
+          </span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+          <!-- Transaminasas TGO / TGP -->
+          <div class="p-4 rounded-xl border border-slate-200 bg-slate-50">
+            <p class="text-xs font-bold uppercase text-slate-500">Perfil Hepático (Transaminasas)</p>
+            <div class="mt-2 space-y-1">
+              <div class="flex justify-between text-xs">
+                <span class="font-medium text-slate-700">TGO (AST):</span>
+                <span class="font-bold text-emerald-700">17.28 U/L <span class="font-normal text-slate-500">(&lt; 38)</span></span>
+              </div>
+              <div class="flex justify-between text-xs">
+                <span class="font-medium text-slate-700">TGP (ALT):</span>
+                <span class="font-bold text-emerald-700">11.74 U/L <span class="font-normal text-slate-500">(&lt; 41)</span></span>
+              </div>
+            </div>
+            <p class="text-[11px] text-emerald-700 font-semibold mt-3">✅ Integridad hepática impecable</p>
+          </div>
+
+          <!-- Tiroides: TSH y T4L -->
+          <div class="p-4 rounded-xl border border-slate-200 bg-slate-50">
+            <p class="text-xs font-bold uppercase text-slate-500">Perfil Tiroideo</p>
+            <div class="mt-2 space-y-1">
+              <div class="flex justify-between text-xs">
+                <span class="font-medium text-slate-700">TSH Ultrasensible:</span>
+                <span class="font-bold text-emerald-700">3.68 uIU/mL <span class="font-normal text-slate-500">(0.27 - 4.7)</span></span>
+              </div>
+              <div class="flex justify-between text-xs">
+                <span class="font-medium text-slate-700">T4 Libre:</span>
+                <span class="font-bold text-emerald-700">0.95 ng/dL <span class="font-normal text-slate-500">(0.75 - 1.54)</span></span>
+              </div>
+            </div>
+            <p class="text-[11px] text-emerald-700 font-semibold mt-3">✅ Eutiroideo (Tiroides normal)</p>
+          </div>
+
+          <!-- Ácido Úrico & Urea -->
+          <div class="p-4 rounded-xl border border-slate-200 bg-slate-50">
+            <p class="text-xs font-bold uppercase text-slate-500">Metabolitos de Depuración</p>
+            <div class="mt-2 space-y-1">
+              <div class="flex justify-between text-xs">
+                <span class="font-medium text-slate-700">Ácido Úrico:</span>
+                <span class="font-bold text-emerald-700">4.93 mg/dL <span class="font-normal text-slate-500">(3.1 - 7.0)</span></span>
+              </div>
+              <div class="flex justify-between text-xs">
+                <span class="font-medium text-slate-700">Urea Sérica:</span>
+                <span class="font-bold text-emerald-700">40.28 mg/dL <span class="font-normal text-slate-500">(10 - 50)</span></span>
+              </div>
+            </div>
+            <p class="text-[11px] text-emerald-700 font-semibold mt-3">✅ Sin hiperuricemia ni gota</p>
+          </div>
+
+          <!-- Vitamina B12 -->
+          <div class="p-4 rounded-xl border border-slate-200 bg-slate-50">
+            <p class="text-xs font-bold uppercase text-slate-500">Nutrición / Neurología</p>
+            <div class="mt-2">
+              <div class="flex justify-between text-xs">
+                <span class="font-medium text-slate-700">Vitamina B12:</span>
+                <span class="font-bold text-emerald-700">588.4 pg/mL</span>
+              </div>
+              <p class="text-[11px] text-slate-500 mt-1">Rango ref: 200 – 1,100 pg/mL</p>
+            </div>
+            <p class="text-[11px] text-emerald-700 font-semibold mt-3">✅ Nivel celular óptimo</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECCIÓN 7: CHECKLIST PREVIO A LA CONSULTA MÉDICA -->
+    <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm print-break-inside-avoid">
+      <h3 class="text-lg font-bold text-slate-900 mb-2 flex items-center gap-2">
+        <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/>
+        </svg>
+        Guía de Preguntas para hacerle a tu Médico Tratante
+      </h3>
+      <p class="text-xs text-slate-500 mb-4">
+        Lleva estas 4 preguntas anotadas a tu consulta médica para sacar el máximo provecho:
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+        <label class="flex items-start gap-2.5 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer">
+          <input type="checkbox" class="mt-0.5 rounded text-blue-600 focus:ring-blue-500">
+          <span><strong>Sobre el PSA (3.68):</strong> ¿Considera oportuno realizar una ecografía prostática o solicitar la prueba de PSA Libre para mayor tranquilidad?</span>
+        </label>
+        <label class="flex items-start gap-2.5 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer">
+          <input type="checkbox" class="mt-0.5 rounded text-blue-600 focus:ring-blue-500">
+          <span><strong>Sobre la Microalbuminuria (92 mg) y Orina:</strong> ¿La presencia de bacterias y leucocitos en orina pudo haber provocado un falso positivo en la microalbuminuria? ¿Cuándo conviene repetirla?</span>
+        </label>
+        <label class="flex items-start gap-2.5 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer">
+          <input type="checkbox" class="mt-0.5 rounded text-blue-600 focus:ring-blue-500">
+          <span><strong>Sobre el Colesterol LDL (137.9) y Total (203.6):</strong> ¿Comenzamos con un plan de ajuste nutricional y ejercicio durante 3 meses antes de considerar medicación?</span>
+        </label>
+        <label class="flex items-start gap-2.5 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer">
+          <input type="checkbox" class="mt-0.5 rounded text-blue-600 focus:ring-blue-500">
+          <span><strong>Sobre el Índice HOMA-IR (2.93):</strong> Aunque la glucosa y HbA1c están perfectas, ¿qué recomendaciones de actividad física me sugiere para mejorar la sensibilidad a la insulina?</span>
+        </label>
+      </div>
+    </div>
+
+    <!-- PIE DE PÁGINA -->
+    <footer class="text-center text-xs text-slate-400 py-4 no-print">
+      Dashboard clínico generado para Juan Carlos Villacorta Reyes • Datos extraídos de análisis clínico Octubre 2025 • Este panel tiene fines informativos y de soporte visual para la consulta con tu médico colegiado.
+    </footer>
+
+  </div>
+
+  <!-- SCRIPT DE FILTRADO INTERACTIVO -->
+  <script>
+    function filterCategory(cat) {
+      const blocks = document.querySelectorAll('.category-block');
+      const buttons = document.querySelectorAll('.cat-btn');
+
+      buttons.forEach(b => {
+        b.className = "cat-btn px-4 py-2 text-sm font-semibold rounded-xl bg-white text-slate-700 hover:bg-slate-100 border border-slate-200 transition";
+      });
+
+      const activeBtn = document.getElementById('btn-' + cat);
+      if (activeBtn) {
+        activeBtn.className = "cat-btn px-4 py-2 text-sm font-semibold rounded-xl bg-blue-600 text-white shadow-sm transition";
+      }
+
+      blocks.forEach(block => {
+        const itemCats = block.getAttribute('data-cat') || '';
+        if (cat === 'all' || itemCats.includes(cat)) {
+          block.style.display = 'block';
+        } else {
+          block.style.display = 'none';
+        }
+      });
+    }
+  </script>
+</body>
+</html>
