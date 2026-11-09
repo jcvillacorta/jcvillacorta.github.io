@@ -70,6 +70,12 @@
 
       <div class="flex items-center gap-3 no-print w-full md:w-auto justify-end">
         
+                <a href="https://drive.google.com/drive/folders/1WagbB0b0-_Wz3ze4z83RZb4MQ3R71mEI?usp=sharing" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold text-sm px-4 py-2.5 rounded-xl transition shadow-sm">
+          <svg class="w-4 h-4 text-slate-950" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+          </svg>
+          PDFs Originales del Laboratorio ↗
+        </a>
         <button onclick="navigator.clipboard.writeText(window.location.href); alert('¡Enlace copiado al portapapeles! Ya puedes pegarlo en WhatsApp para enviárselo a tu médico.');" class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium px-4 py-2.5 rounded-xl transition shadow-sm">
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
@@ -84,6 +90,28 @@
         </button>
       </div>
     </header>
+
+    
+    <!-- BANNER DE RESPALDO DOCUMENTAL (PDFs ORIGINALES) -->
+    <div class="bg-gradient-to-r from-amber-50 to-orange-50 border border-amber-200 rounded-2xl p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs text-amber-950 shadow-sm print-break-inside-avoid">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-amber-100 border border-amber-300 flex items-center justify-center shrink-0 text-amber-800">
+          <svg class="w-6 h-6 text-amber-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+          </svg>
+        </div>
+        <div>
+          <p class="font-bold text-slate-900 text-sm">Informes Originales Escaneados Disponibles en PDF</p>
+          <p class="text-slate-600">Puedes revisar los informes clínicos emitidos directamente por el laboratorio y el informe de ultrasonografía urológica.</p>
+        </div>
+      </div>
+      <a href="https://drive.google.com/drive/folders/1WagbB0b0-_Wz3ze4z83RZb4MQ3R71mEI?usp=sharing" target="_blank" rel="noopener noreferrer" class="shrink-0 inline-flex items-center gap-1.5 bg-slate-900 hover:bg-slate-800 text-white font-bold px-4 py-2 rounded-xl transition shadow-sm text-xs">
+        <svg class="w-4 h-4 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+        </svg>
+        Abrir PDFs en Google Drive
+      </a>
+    </div>
 
     <!-- RESUMEN EJECUTIVO (KPIs CLÍNICOS) -->
     <section class="grid grid-cols-1 md:grid-cols-4 gap-4">
